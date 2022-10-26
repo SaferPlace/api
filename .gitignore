@@ -1,0 +1,11 @@
+# Ignore Go Generated protobufs
+*.pb.go
+*.connect.go
+
+# Ignore JS/TS generated protobufs
+*_pb.js
+*_pb.ts
+*_pb.d.ts
+*_connectweb.js
+*_connectweb.ts
+*_connectweb.d.ts

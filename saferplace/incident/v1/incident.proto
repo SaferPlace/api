@@ -1,0 +1,53 @@
+// Copyright 2022 SaferPlace
+
+syntax = "proto3";
+
+package saferplace.incident.v1;
+
+option go_package = "safer.place/api/incident/v1;incident";
+
+// Incident defines an individual incident as it happened.
+message Incident {
+    // ID of the report. This would be generated on ingestion, and therefore
+    // does not have to be specified by the client as it will be overriden.
+    string id = 1;
+    // Timestamp (unix) at which the incident occured, in seconds.
+    int64 timestamp = 2;
+    // Lat (lattitude) of the incident.
+    float lat = 3;
+    // Lon (Longitude) of the incident.
+    float lon = 4;
+    // Description provided by the user when sending the incident.
+    string description = 5;
+    // Resolution of the incident.
+    Resolution resolution = 6;
+    // Comments provided by the reviewers.
+    repeated Comment reviewer_comments = 7;
+    // Tags added by the reviewer to categorize the incident. This might be
+    // updated in the future to maybe not be free-form but rather just specific
+    // categories.
+    repeated string tags = 8;
+
+    // TODO: Add fields like the image or video. Either link or the bytes
+    // directly.
+}
+
+// Comment left by the reviewer.
+message Comment {
+    // Timestamp (unix) of the comment, in seconds.
+    int64 timestamp = 1;
+    // AuthorID is the author of the comment
+    string author_id = 2;
+    // Message left in the comment
+    string message = 3;
+}
+
+
+// Resolution defines how the incident was resolved, or not yet.
+enum Resolution {
+    RESOLUTION_UNSPECIFIED = 0;
+    RESOLUTION_REJECTED = 1;
+    RESOLUTION_ACCEPTED = 2;
+    RESOLUTION_ALERTED = 3;
+}
+

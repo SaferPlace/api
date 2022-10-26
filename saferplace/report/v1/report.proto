@@ -1,0 +1,25 @@
+// Copyright 2022 SaferPlace
+
+syntax = "proto3";
+
+package saferplace.report.v1;
+
+import "saferplace/incident/v1/incident.proto";
+
+option go_package = "safer.place/api/saferplace/report/v1;report";
+
+// Report API
+//
+// The Report API allows users to report incidents as they happen.
+service ReportService {
+    // SendReport 
+    rpc SendReport(SendReportRequest) returns (SendReportResponse);
+}
+
+message SendReportRequest {
+    saferplace.incident.v1.Incident incident = 1;
+}
+
+message SendReportResponse {
+    
+}
