@@ -23,6 +23,7 @@ jobs:
           git config user.email github-actions@github.com
           git switch generated
           git reset --hard main
+          rm .gitignore
           buf generate
           git add -A
           git commit -m "Generate Protobufs"
