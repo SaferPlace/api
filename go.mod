@@ -1,4 +1,4 @@
-module safer.place/api
+module api.safer.place
 
 go 1.19
 

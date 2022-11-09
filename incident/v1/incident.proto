@@ -2,9 +2,9 @@
 
 syntax = "proto3";
 
-package saferplace.incident.v1;
+package incident.v1;
 
-option go_package = "safer.place/api/saferplace/incident/v1;incident";
+option go_package = "api.safer.place/incident/v1;incident";
 
 // Incident defines an individual incident as it happened.
 message Incident {
