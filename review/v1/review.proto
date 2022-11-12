@@ -1,0 +1,35 @@
+// Copyright 2022 SaferPlace
+
+syntax = "proto3";
+
+package review.v1;
+
+import "incident/v1/incident.proto";
+
+option go_package = "api.safer.place/review/v1;review";
+
+// Review API
+//
+// The review API is used by the reviewers to decide the faith of a given report
+service ReviewService {
+    // ReviewIncident contains a stream of incoming incidents.
+    rpc ReviewIncident(stream ReviewIncidentRequest) returns (stream ReviewIncidentResponse);
+}
+
+// IncomingIncidentRequest has the incident on which the reviewer should respond.
+message ReviewIncidentRequest {
+    // Incident is the full incident that has been reported.
+    incident.v1.Incident incident = 1;
+}
+
+// IncomingIncidentResponse is the response given by the author
+message ReviewIncidentResponse {
+    // Id of the incident that the response is given to
+    string id = 1;
+    // Comment left by the reviewer
+    string comment = 2;
+    // Resolution of the review. If the resolution is UNSPECIFIED, it means that
+    // the incident has not reached a final review and will be re-scheduled for
+    // review.
+    incident.v1.Resolution resolution = 3;
+}
