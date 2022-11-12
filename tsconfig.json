@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "ES2021",
+        "strict": true,
+        "declaration": true,
+        "outDir": "dist",
+        "removeComments": true,
+        "moduleResolution": "node",
+    },
+    "include":[
+        "src"
+    ]
+}

@@ -28,4 +28,16 @@ jobs:
           git add -A
           git commit -m "Generate Protobufs"
           git push origin generated --force
+
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@saferplace'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
+      - run: pnpm publish --no-git-checks --publish-branch=generated
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
           

@@ -1,3 +1,5 @@
+node_modules/
+
 # Ignore Go Generated protobufs
 *.pb.go
 *.connect.go

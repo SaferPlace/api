@@ -1,0 +1,23 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@bufbuild/protobuf': ^0.2.1
+  typescript: ^4.8.4
+
+dependencies:
+  '@bufbuild/protobuf': 0.2.1
+
+devDependencies:
+  typescript: 4.8.4
+
+packages:
+
+  /@bufbuild/protobuf/0.2.1:
+    resolution: {integrity: sha512-7bsong0tlLQvkdq5K1U6qFFn35oggCwxaiOs1LHGsqkP/E1FvW4JmRHkxkjlyMNd01S5GbqCrnyHD5VW6l3Djg==}
+    dev: false
+
+  /typescript/4.8.4:
+    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
