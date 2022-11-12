@@ -10,9 +10,8 @@ plugins:
   opt: paths=source_relative
 
 - remote: buf.build/bufbuild/plugins/connect-web:v0.3.0-1
-  out: src
-  opt: target=ts
-  # opt: target=js+dts
+  out: .
+  opt: target=js+dts
 - remote: buf.build/bufbuild/plugins/es:v0.0.9-1
-  out: src
-  opt: target=ts
+  out: .
+  opt: target=js+dts
