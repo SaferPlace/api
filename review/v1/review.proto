@@ -12,18 +12,24 @@ option go_package = "api.safer.place/review/v1;review";
 //
 // The review API is used by the reviewers to decide the faith of a given report
 service ReviewService {
+    rpc StreamIncidents(StreamIncidentsRequest) returns (stream StreamIncidentsResponse);
     // ReviewIncident contains a stream of incoming incidents.
-    rpc ReviewIncident(stream ReviewIncidentRequest) returns (stream ReviewIncidentResponse);
+    rpc ReviewIncident(ReviewIncidentRequest) returns (ReviewIncidentResponse);
 }
 
-// IncomingIncidentRequest has the incident on which the reviewer should respond.
-message ReviewIncidentRequest {
+// StreamIncidentsRequest is empty
+message StreamIncidentsRequest {
+
+}
+
+// StreamIncidentsResponse is a stream of incidents.
+message StreamIncidentsResponse {
     // Incident is the full incident that has been reported.
     incident.v1.Incident incident = 1;
 }
 
-// IncomingIncidentResponse is the response given by the author
-message ReviewIncidentResponse {
+// IncomingIncidentRequest has the incident on which the reviewer should respond.
+message ReviewIncidentRequest {
     // Id of the incident that the response is given to
     string id = 1;
     // Comment left by the reviewer
@@ -32,4 +38,9 @@ message ReviewIncidentResponse {
     // the incident has not reached a final review and will be re-scheduled for
     // review.
     incident.v1.Resolution resolution = 3;
+}
+
+// ReviewIncidentResponse is empty
+message ReviewIncidentResponse {
+    
 }
