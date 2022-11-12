@@ -1,23 +1,17 @@
 {
     "name": "@saferplace/api",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "repository": {
         "type": "git",
         "url": "https://github.com/saferplace/api"
-    },
-    "scripts": {
-        "build": "tsc",
-        "prepublishOnly": "npm run build"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
     "files": [
-        "dist/*"
+        "**/*.js",
+        "**/*.ts"
     ],
-    "devDependencies": {
-        "typescript": "^4.8.4"
-    },
     "dependencies": {
         "@bufbuild/protobuf": "^0.2.1"
     }
