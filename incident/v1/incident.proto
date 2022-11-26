@@ -13,7 +13,7 @@ message Incident {
     string id = 1;
     // Timestamp (unix) at which the incident occured, in seconds.
     int64 timestamp = 2;
-    // Lat (lattitude) of the incident.
+    // Lat (latitude) of the incident.
     float lat = 3;
     // Lon (Longitude) of the incident.
     float lon = 4;
