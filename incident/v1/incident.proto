@@ -40,6 +40,8 @@ message Comment {
     string author_id = 2;
     // Message left in the comment
     string message = 3;
+    // Resolution from the comment, allows to keep track of the changes
+    Resolution resolution = 4;
 }
 
 
