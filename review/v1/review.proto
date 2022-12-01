@@ -12,23 +12,19 @@ option go_package = "api.safer.place/review/v1;review";
 //
 // The review API is used by the reviewers to decide the faith of a given report
 service ReviewService {
-    rpc StreamIncidents(StreamIncidentsRequest) returns (stream StreamIncidentsResponse);
-    // ReviewIncident contains a stream of incoming incidents.
+    // ViewIncident displays the incident information for review.
+    rpc ViewIncident(ViewIncidentRequest) returns (ViewIncidentResponse);
+    // ReviewIncident allows the client to send reviewed incident.
     rpc ReviewIncident(ReviewIncidentRequest) returns (ReviewIncidentResponse);
-
-    // WaitForIncident is a long standing RPC call which will only return the
-    // incident when it arrives
-    rpc WaitForIncident(WaitForIncidentRequest) returns (WaitForIncidentResponse);
 }
 
-// StreamIncidentsRequest is empty
-message StreamIncidentsRequest {
-
+// ViewIncidentRequest will show the incident based on the given id.
+message ViewIncidentRequest {
+    string id = 1;
 }
 
-// StreamIncidentsResponse is a stream of incidents.
-message StreamIncidentsResponse {
-    // Incident is the full incident that has been reported.
+// ViewIncidentResponse returns the incident for review.
+message ViewIncidentResponse {
     incident.v1.Incident incident = 1;
 }
 
@@ -47,13 +43,4 @@ message ReviewIncidentRequest {
 // ReviewIncidentResponse is empty
 message ReviewIncidentResponse {
     
-}
-
-message WaitForIncidentRequest {
-
-}
-
-message WaitForIncidentResponse {
-    // Incident is the full incident that has been reported.
-    incident.v1.Incident incident = 1;
 }
