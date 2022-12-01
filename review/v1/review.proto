@@ -16,6 +16,10 @@ service ReviewService {
     rpc ViewIncident(ViewIncidentRequest) returns (ViewIncidentResponse);
     // ReviewIncident allows the client to send reviewed incident.
     rpc ReviewIncident(ReviewIncidentRequest) returns (ReviewIncidentResponse);
+    // IncidentsWithoutReview shows basic information about incidents which
+    // have not been reviewed yet.
+    rpc IncidentsWithoutReview(IncidentsWithoutReviewRequest)
+        returns (IncidentsWithoutReviewResponse);
 }
 
 // ViewIncidentRequest will show the incident based on the given id.
@@ -43,4 +47,23 @@ message ReviewIncidentRequest {
 // ReviewIncidentResponse is empty
 message ReviewIncidentResponse {
     
+}
+
+// IncidentsWithoutReviewRequest is send to see all the reviews which have
+// the resolution set as UNSPECIFIED
+message IncidentsWithoutReviewRequest {
+
+}
+
+// BasicIncidentDetails are send without are the bare minimum used to display
+// the incident.
+message BasicIncidentDetails {
+    string id = 1;
+    int64 timestamp = 2;
+    string description = 3;
+}
+
+// IncidentsWithoutReviewResponse contains the list of basic incident details
+message IncidentsWithoutReviewResponse {
+    repeated BasicIncidentDetails incidents = 1;
 }
