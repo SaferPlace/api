@@ -4,6 +4,8 @@ syntax = "proto3";
 
 package incident.v1;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "api.safer.place/incident/v1;incident";
 
 // Incident defines an individual incident as it happened.
@@ -11,25 +13,37 @@ message Incident {
     // ID of the report. This would be generated on ingestion, and therefore
     // does not have to be specified by the client as it will be overriden.
     string id = 1;
-    // Timestamp (unix) at which the incident occured, in seconds.
-    int64 timestamp = 2;
-    // Lat (latitude) of the incident.
-    float lat = 3;
-    // Lon (Longitude) of the incident.
-    float lon = 4;
+    // Timestamp at which the incident occured.
+    google.protobuf.Timestamp timestamp = 2;
+    // Location of the incident. Since an incident can take place on a moving
+    // vehicle, or is related to a moving vehicle, the specific coordinates
+    // make less sense.
+    Location location = 3;
+    // Coordinates at which the incident occured.
+    Coordinates coordinates = 4;
+    // Transportation defines the method of transportation on which the
+    // incident occured.
+    Transportation transportation_mode = 5;
+    // Identifier of the transportation mode. This is context specific and can
+    // be the bus number, licence place, train line, bus stop number.
+    string transportation_identifier = 6;
     // Description provided by the user when sending the incident.
-    string description = 5;
+    string description = 7;
     // Resolution of the incident.
-    Resolution resolution = 6;
+    Resolution resolution = 8;
     // Comments provided by the reviewers.
-    repeated Comment reviewer_comments = 7;
+    repeated Comment reviewer_comments = 9;
     // Tags added by the reviewer to categorize the incident. This might be
     // updated in the future to maybe not be free-form but rather just specific
     // categories.
-    repeated string tags = 8;
-
+    repeated string tags = 10;
     // TODO: Add fields like the image or video. Either link or the bytes
     // directly.
+}
+
+message Coordinates {
+    float lat = 1;
+    float lon = 2;
 }
 
 // Comment left by the reviewer.
@@ -44,6 +58,26 @@ message Comment {
     Resolution resolution = 4;
 }
 
+// Rough description of the location of incident.
+enum Location {
+    // Unspecified should not be used. It will be automatically rejected.
+    LOCATION_UNSPECIFIED = 0;
+    // The incident happened outdoors.
+    LOCATION_OUTSIDE = 1;
+    // The incident happened indoors.
+    LOCATION_INSIDE = 2;
+    // The incident happened inside a moving vehicle.
+    LOCATION_TRANSPORTATION = 3;
+}
+
+// Transportation defines the method of transportation for the incident.
+enum Transportation {
+    TRANSPORTATION_UNSPECIFIED = 0;
+    TRANSPORTATION_BUS = 1;
+    TRANSPORTATION_TRAIN = 2;
+    TRANSPORTATION_TRAM = 3;
+    TRANSPORTATION_TAXI = 4;
+}
 
 // Resolution defines how the incident was resolved, or not yet.
 enum Resolution {
