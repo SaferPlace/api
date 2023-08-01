@@ -15,9 +15,11 @@ service ViewerService {
     rpc ViewInRadius(ViewInRadiusRequest) returns (ViewInRadiusResponse);
 }
 
-// ViewInRadiusRequest shows the 
+// ViewInRadiusRequest shows all incidents within specified radius (in meters).
 message ViewInRadiusRequest {
+    // Center of the search radius
     incident.v1.Coordinates center = 1;
+    // Radius from the place that the incident happened in, in meters.
     float radius = 2;
 }
 
