@@ -1,0 +1,27 @@
+// Copyright 2023 SaferPlace
+
+syntax = "proto3";
+
+package viewer.v1;
+
+import "incident/v1/incident.proto";
+
+option go_package = "api.safer.place/viewer/v1;viewer";
+
+// ViewerService provices the ability to view incidents.
+service ViewerService {
+    // ViewInRadius provides all incidents within a given radius from a
+    // given position.
+    rpc ViewInRadius(ViewInRadiusRequest) returns (ViewInRadiusResponse);
+}
+
+// ViewInRadiusRequest shows the 
+message ViewInRadiusRequest {
+    incident.v1.Coordinates center = 1;
+    float radius = 2;
+}
+
+message ViewInRadiusResponse {
+    repeated incident.v1.Incident incidents = 1;
+}
+
