@@ -20,7 +20,7 @@ message ViewInRadiusRequest {
     // Center of the search radius
     incident.v1.Coordinates center = 1;
     // Radius from the place that the incident happened in, in meters.
-    float radius = 2;
+    double radius = 2;
 }
 
 message ViewInRadiusResponse {
