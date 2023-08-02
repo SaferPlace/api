@@ -42,8 +42,8 @@ message Incident {
 }
 
 message Coordinates {
-    float lat = 1;
-    float lon = 2;
+    double lat = 1;
+    double lon = 2;
 }
 
 // Comment left by the reviewer.
