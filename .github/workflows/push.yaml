@@ -19,8 +19,8 @@ jobs:
           against: 'https://github.com/saferplace/api.git#branch=main'
       - name: Generate and Push
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name "SaferPlace Github Actions"
+          git config user.email github-actions@safer.place
           git switch generated
           git reset --hard main
           rm .gitignore
