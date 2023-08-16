@@ -13,6 +13,8 @@ service ViewerService {
     // ViewInRadius provides all incidents within a given radius from a
     // given position.
     rpc ViewInRadius(ViewInRadiusRequest) returns (ViewInRadiusResponse);
+    // ViewIncident displays the incident information for the specified ID.
+    rpc ViewIncident(ViewIncidentRequest) returns (ViewIncidentResponse);
 }
 
 // ViewInRadiusRequest shows all incidents within specified radius (in meters).
@@ -27,3 +29,12 @@ message ViewInRadiusResponse {
     repeated incident.v1.Incident incidents = 1;
 }
 
+// ViewIncidentRequest will show the incident based on the given id.
+message ViewIncidentRequest {
+    string id = 1;
+}
+
+// ViewIncidentResponse returns the incident for review.
+message ViewIncidentResponse {
+    incident.v1.Incident incident = 1;
+}
