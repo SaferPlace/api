@@ -37,8 +37,9 @@ message Incident {
     // updated in the future to maybe not be free-form but rather just specific
     // categories.
     repeated string tags = 10;
-    // TODO: Add fields like the image or video. Either link or the bytes
-    // directly.
+    // ImageID is the ID of the uploaded image for this incident. It is assumed to already
+    // exist and be available at the time of incident creation.
+    string image_id = 11;
 }
 
 message Coordinates {
