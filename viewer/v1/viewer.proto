@@ -13,7 +13,10 @@ option go_package = "api.safer.place/viewer/v1;viewer";
 service ViewerService {
     // ViewInRadius provides all incidents within a given radius from a
     // given position.
+    // DEPRECATED: Use ViewInRegion instead as it provides better privacy.
     rpc ViewInRadius(ViewInRadiusRequest) returns (ViewInRadiusResponse);
+    // ViewInRegion returns all incidents in the provided region.
+    rpc ViewInRegion(ViewInRegionRequest) returns (ViewInRegionResponse);
     // ViewIncident displays the incident information for the specified ID.
     rpc ViewIncident(ViewIncidentRequest) returns (ViewIncidentResponse);
     // ViewAlertingIncidents shows the incidents in the specified area of interest
@@ -29,6 +32,19 @@ message ViewInRadiusRequest {
 }
 
 message ViewInRadiusResponse {
+    repeated incident.v1.Incident incidents = 1;
+}
+
+// ViewInRegionRequest shows all incidents in the provided region.
+message ViewInRegionRequest {
+    Region region = 1;
+    // since allows to specify when is the last incident timestamp that we want to use. If empty,
+    // the range is determined by the server.
+    google.protobuf.Timestamp since = 2;
+}
+
+// ViewInRegionResponse returns the list of incidents.
+message ViewInRegionResponse {
     repeated incident.v1.Incident incidents = 1;
 }
 
