@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ github.token }}
       - uses: bufbuild/buf-lint-action@v1
       # Disabled the breaking changes check before we have a stable v1 API.
       # - uses: bufbuild/buf-breaking-action@v1
