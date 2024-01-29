@@ -13,6 +13,6 @@
         "**/*.ts"
     ],
     "dependencies": {
-        "@bufbuild/protobuf": "^1.6.0"
+        "@bufbuild/protobuf": "^1.7.1"
     }
 }
