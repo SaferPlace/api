@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@bufbuild/protobuf':
-    specifier: ^1.6.0
-    version: 1.6.0
+    specifier: ^1.7.2
+    version: 1.7.2
 
 packages:
 
-  /@bufbuild/protobuf@1.6.0:
-    resolution: {integrity: sha512-hp19vSFgNw3wBBcVBx5qo5pufCqjaJ0Cfk5H/pfjNOfNWU+4/w0QVOmfAOZNRrNWRrVuaJWxcN8P2vhOkkzbBQ==}
+  /@bufbuild/protobuf@1.7.2:
+    resolution: {integrity: sha512-i5GE2Dk5ekdlK1TR7SugY4LWRrKSfb5T1Qn4unpIMbfxoeGKERKQ59HG3iYewacGD10SR7UzevfPnh6my4tNmQ==}
     dev: false
